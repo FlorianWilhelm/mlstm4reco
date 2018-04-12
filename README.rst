@@ -3,14 +3,31 @@ mlstm4reco
 ==========
 
 
-Benchmark multiplicative LSTM vs LSTM
+Benchmark multiplicative LSTM vs. ordinary LSTM
 
 
 Description
 ===========
 
-A longer description of your project goes here...
+Create a conda environment with::
 
+    conda env create -f environment.yml
+
+
+activate the environment with::
+
+    source activate mlstm4reco
+
+and install it with::
+
+    python setup.py develop
+
+Then change into the ``experiments`` directory and run:
+
+   ./run.py 10m -m mlstm
+
+to run the ``mlstm`` model on the Movielens 10m dataset. Check out
+``./run.py -h`` for more help.
 
 Note
 ====
