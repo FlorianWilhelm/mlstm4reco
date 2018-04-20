@@ -242,7 +242,7 @@ def main(args):
     args.variant = args.dataset
     train, rest = user_based_train_test_split(
         dataset,
-        test_percentage=0.05,
+        test_percentage=0.2,
         random_state=random_state)
     test, valid = user_based_train_test_split(
         rest,
