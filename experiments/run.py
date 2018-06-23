@@ -144,11 +144,6 @@ def get_objective(train, valid, test, random_state=None):
         elapsed = time.clock() - start
         print(model)
 
-        train_mrr = sequence_mrr_score(
-            model,
-            train,
-            exclude_preceding=True
-        ).mean()
         validation_mrr = sequence_mrr_score(
             model,
             valid,
@@ -169,7 +164,6 @@ def get_objective(train, valid, test, random_state=None):
 
         return {'loss': -validation_mrr,
                 'status': status,
-                'train_mrr': train_mrr,
                 'validation_mrr': validation_mrr,
                 'test_mrr': test_mrr,
                 'elapsed': elapsed,
@@ -221,7 +215,7 @@ def main(args):
     args = parse_args(args)
 
     # Fix random_state
-    seed = 66
+    seed = 72
     set_seed(seed)
     random_state = np.random.RandomState(seed)
 

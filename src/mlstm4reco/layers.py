@@ -15,8 +15,12 @@ class mLSTM(RNNBase):
 
         w_mx = torch.Tensor(hidden_size, input_size)
         w_mh = torch.Tensor(hidden_size, hidden_size)
+        b_mx = torch.Tensor(hidden_size)
+        b_mh = torch.Tensor(hidden_size)
         self.w_mx = Parameter(w_mx)
+        self.b_mx = Parameter(b_mx)
         self.w_mh = Parameter(w_mh)
+        self.b_mh = Parameter(b_mh)
 
         self.lstm_cell = LSTMCell(input_size, hidden_size, bias)
         self.reset_parameters()
@@ -35,8 +39,7 @@ class mLSTM(RNNBase):
         hx, cx = hx
         steps = [cx.unsqueeze(1)]
         for seq in range(n_seq):
-            # ToDo: Think about adding biases here
-            mx = F.linear(input[:, seq, :], self.w_mx) * F.linear(hx, self.w_mh)
+            mx = F.linear(input[:, seq, :], self.w_mx, self.b_mx) * F.linear(hx, self.w_mh, self.b_mh)
             hx = (mx, cx)
             hx, cx = self.lstm_cell(input[:, seq, :], hx)
             steps.append(cx.unsqueeze(1))
