@@ -11,10 +11,14 @@ Description
 
 Create a conda environment with::
 
-    conda env create -f environment.yml
+    conda env create -f environment-abstract.yml
 
+or use::
 
-activate the environment with::
+    conda env create -f environment-concrete.yml
+
+to perfectly replicate the environment.
+Then activate the environment with::
 
     source activate mlstm4reco
 

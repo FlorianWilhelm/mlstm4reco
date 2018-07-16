@@ -7,12 +7,13 @@ channels:
 - intel
 - defaults
 dependencies:
+- setuptools>=31
 - ipython
 - networkx=1.11
 - python=3.6
-- pytorch=0.3
+- pytorch=0.4
 - numpy
 - pandas
-- spotlight=0.1.4
+- spotlight=0.1.5
 - pip:
   - hyperopt
