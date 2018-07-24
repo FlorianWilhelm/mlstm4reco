@@ -13,14 +13,14 @@ class mLSTM(RNNBase):
                  num_layers=1, bias=bias, batch_first=True,
                  dropout=0, bidirectional=False)
 
-        w_mx = torch.Tensor(hidden_size, input_size)
-        w_mh = torch.Tensor(hidden_size, hidden_size)
-        b_mx = torch.Tensor(hidden_size)
-        b_mh = torch.Tensor(hidden_size)
-        self.w_mx = Parameter(w_mx)
-        self.b_mx = Parameter(b_mx)
-        self.w_mh = Parameter(w_mh)
-        self.b_mh = Parameter(b_mh)
+        w_im = torch.Tensor(hidden_size, input_size)
+        w_hm = torch.Tensor(hidden_size, hidden_size)
+        b_im = torch.Tensor(hidden_size)
+        b_hm = torch.Tensor(hidden_size)
+        self.w_im = Parameter(w_im)
+        self.b_im = Parameter(b_im)
+        self.w_hm = Parameter(w_hm)
+        self.b_hm = Parameter(b_hm)
 
         self.lstm_cell = LSTMCell(input_size, hidden_size, bias)
         self.reset_parameters()
@@ -39,7 +39,7 @@ class mLSTM(RNNBase):
         hx, cx = hx
         steps = [cx.unsqueeze(1)]
         for seq in range(n_seq):
-            mx = F.linear(input[:, seq, :], self.w_mx, self.b_mx) * F.linear(hx, self.w_mh, self.b_mh)
+            mx = F.linear(input[:, seq, :], self.w_im, self.b_im) * F.linear(hx, self.w_hm, self.b_hm)
             hx = (mx, cx)
             hx, cx = self.lstm_cell(input[:, seq, :], hx)
             steps.append(cx.unsqueeze(1))
