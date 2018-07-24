@@ -30,11 +30,8 @@ class mLSTM(RNNBase):
         for weight in self.parameters():
             weight.data.uniform_(-stdv, stdv)
 
-    def forward(self, input, hx=None):
+    def forward(self, input, hx):
         n_batch, n_seq, n_feat = input.size()
-
-        assert hx is not None
-        # Fix two things. First input and first hidden state should not be zero!
 
         hx, cx = hx
         steps = [cx.unsqueeze(1)]
