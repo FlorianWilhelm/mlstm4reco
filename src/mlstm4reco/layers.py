@@ -9,7 +9,7 @@ from torch.nn import functional as F
 class mLSTM(RNNBase):
     def __init__(self, input_size, hidden_size, bias=True):
         super(mLSTM, self).__init__(
-            mode='LSTM', input_size=input_size, hidden_size=input_size,
+            mode='LSTM', input_size=input_size, hidden_size=hidden_size,
                  num_layers=1, bias=bias, batch_first=True,
                  dropout=0, bidirectional=False)
 
