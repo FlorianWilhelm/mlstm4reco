@@ -3,7 +3,7 @@ mlstm4reco
 ==========
 
 
-Benchmark multiplicative LSTM vs. ordinary LSTM
+Benchmark multiplicative LSTM vs. ordinary LSTM. Read this `blog post`_ about the evaluation.
 
 
 Description
@@ -38,3 +38,5 @@ Note
 
 This project has been set up using PyScaffold 3.0.2. For details and usage
 information on PyScaffold see http://pyscaffold.org/.
+
+.. _`blog post`: https://florianwilhelm.info/2018/08/multiplicative_LSTM_for_sequence_based_recos/
